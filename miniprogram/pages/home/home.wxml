@@ -1,0 +1,23 @@
+<!-- miniprogram/pages/home/home.wxml -->
+<view wx:if="{{list.length>0}}">
+  <van-cell-group wx:for="{{list}}" wx:key="_id" custom-class="record-item">
+    <van-cell title="日期" value="{{item.date}}" />
+    <van-cell title="提报人" value="{{item.username}}" />
+    <van-cell title="车间" value="{{item.workshop}}" />
+    <van-cell title="工序" value="{{item.procedure}}" />
+    <van-cell title="设备" value="{{item.equipment}}" />
+    <van-cell title="图片" value="{{item.cloudFilePaths.legnth}}" />
+    <view class="" hover-class="none" hover-stop-propagation="false">
+      <image wx:for="{{item.cloudFilePaths}}" wx:for-item="img" wx:key="img" class="img-item" src="{{img}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+    </view>
+    <van-cell title="问题描述" value="内容" border="{{ false }}" />
+    <view class="descrption" hover-class="none" hover-stop-propagation="false">
+      <text class="" selectable="false" space="false" decode="false">
+        {{item.descrption || '无'}}
+      </text>
+    </view>
+  </van-cell-group>
+</view>
+<view wx:else class="no-records">
+  <text class="" selectable="false" space="false" decode="false">暂无记录</text>
+</view>

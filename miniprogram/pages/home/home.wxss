@@ -1,0 +1,21 @@
+/* miniprogram/pages/home/home.wxss */
+.record-item {
+  overflow: auto;
+  margin-bottom: 30rpx;
+  padding-bottom: 30rpx;
+}
+.img-item {
+  width: 180rpx;
+  height: 180rpx;
+  margin-right:20rpx;
+}
+
+.descrption {
+  background: #fff;
+  line-height: 30rpx;
+  padding: 20rpx;
+}
+
+.no-records {
+  text-align: center; 
+}

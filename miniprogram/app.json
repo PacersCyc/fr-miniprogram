@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/new/new",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -21,6 +23,23 @@
     "navigationBarTitleText": "设备问题上报系统",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#f00",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/fr_home.jpeg",
+        "selectedIconPath": "images/fr_home.jpeg"
+      },
+      {
+        "pagePath": "pages/new/new",
+        "text": "报告",
+        "iconPath": "images/fr_my.jpg",
+        "selectedIconPath": "images/fr_my.jpg"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
 }

@@ -1,0 +1,73 @@
+<!--miniprogram/pages/new/new.wxml-->
+<view class="" hover-class="none" hover-stop-propagation="false">
+  <van-cell-group>
+    <van-field
+      value="{{ username }}"
+      required
+      clearable
+      label="提报人"
+      placeholder="请输入提报人名姓名"
+      bind:change="onNameChange"
+      bind:click-icon="onClickIcon"
+    />
+
+    <van-field
+      value="{{ workshop }}"
+      label="车间"
+      placeholder="请输入车间"
+      required
+      border="{{ false }}"
+      bind:change="onWorkShopChange"
+    />
+
+    <van-field
+      value="{{ procedure }}"
+      label="工序"
+      placeholder="请输入车间"
+      required
+      border="{{ false }}"
+      bind:change="onProcedureChange"
+    />
+
+    <van-field
+      value="{{ equipment }}"
+      label="设备"
+      placeholder="请输入设备"
+      required
+      border="{{ false }}"
+      bind:change="onEquipmentChange"
+    />
+
+    <view class="upload-label" hover-class="none" hover-stop-propagation="false">
+      <label for="">上传图片</label>
+    </view>
+    <van-uploader 
+      file-list="{{ imgList }}" 
+      accept="image"
+      capture="camera"
+      multiple
+      bind:after-read="afterRead"
+      bind:delete="deleteImg"
+    />
+
+    <van-field
+      value="{{ descrption }}" 
+      type="textarea"
+      label="问题描述"
+      rows="2"
+      autosize
+      input-class="textarea-add"
+      bind:change="onDescrptionChange"
+    />
+
+    <van-button
+      custom-class="submit-btn"
+      type="primary" 
+      size="large"
+      round
+      bind:click="submit"
+    >
+      提交
+    </van-button>
+</van-cell-group>
+</view>
