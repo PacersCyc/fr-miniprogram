@@ -3,6 +3,7 @@
   <van-cell-group wx:for="{{list}}" wx:key="_id" custom-class="record-item">
     <van-cell title="日期" value="{{item.date}}" />
     <van-cell title="提报人" value="{{item.username}}" />
+    <van-cell title="责任人" value="{{item.responsible}}" />
     <van-cell title="车间" value="{{item.workshop}}" />
     <van-cell title="工序" value="{{item.procedure}}" />
     <van-cell title="设备" value="{{item.equipment}}" />

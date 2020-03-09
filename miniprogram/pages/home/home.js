@@ -66,8 +66,9 @@ Page({
 
   getData() {
     const db = wx.cloud.database()
-    console.log(db)
+    wx.showLoading('loading...')
     db.collection('records').orderBy('date', 'desc').get().then(res => {
+      wx.hideLoading()
       console.log(res)
       this.setData({
         list: res.data.map(item => ({
@@ -75,6 +76,9 @@ Page({
           date: this.formatDate(item.date)
         }))
       })
+    }).catch(e => {
+      wx.hideLoading()
+      console.error(e)
     })
   },
 

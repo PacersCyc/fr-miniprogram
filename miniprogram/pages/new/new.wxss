@@ -1,5 +1,5 @@
 /* miniprogram/pages/new/new.wxss */
-.upload-label {
+.workshop-label, .upload-label {
   padding: 20rpx 0;
   font-size: 14px;
 }

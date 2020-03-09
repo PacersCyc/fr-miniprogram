@@ -1,12 +1,17 @@
 // miniprogram/pages/new/new.js
+const COLUMNS = ['锻造', '金工', '绞丝', '其他']
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    show: false,
+    columns: COLUMNS,
     uploadCapture: ['album', 'camera'],
     username: '',
+    responsible: '',
     workshop: '',
     procedure: '',
     equipment: '',
@@ -71,10 +76,36 @@ Page({
 
   },
 
+  showPopup() {
+    this.setData({
+      show: true
+    })
+  },
+
+  onClose() {
+    this.setData({
+      show: false
+    })
+  },
+
   onNameChange(e) {
     console.log(e.detail)
     this.setData({
       username: e.detail
+    })
+  },
+
+  onResponsibleChange(e) {
+    this.setData({
+      responsible: e.detail
+    })
+  },
+
+  onWorkShopConfirm(e) {
+    console.log(e)
+    this.setData({
+      show: false,
+      workshop: e.detail.value
     })
   },
 
@@ -157,6 +188,7 @@ Page({
   createRecord() {
     const {
       username,
+      responsible,
       workshop,
       procedure,
       equipment,
@@ -168,8 +200,12 @@ Page({
       wx.showToast({ title: '提报人必填', icon: 'none' })
       return
     }
+    if (!responsible) {
+      wx.showToast({ title: '责任人必填', icon: 'none' })
+      return
+    }
     if (!workshop) {
-      wx.showToast({ title: '车间必填', icon: 'none' })
+      wx.showToast({ title: '请选择车间', icon: 'none' })
       return
     }
     if (!procedure) {
@@ -185,6 +221,7 @@ Page({
     db.collection('records').add({
       data: {
         username,
+        responsible,
         workshop,
         procedure,
         equipment,
@@ -198,6 +235,7 @@ Page({
       console.log(res)
       this.setData({
         username: '',
+        responsible: '',
         workshop: '',
         procedure: '',
         equipment: '',

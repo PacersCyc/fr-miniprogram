@@ -5,6 +5,7 @@
       value="{{ username }}"
       required
       clearable
+      input-align="right"
       label="提报人"
       placeholder="请输入提报人名姓名"
       bind:change="onNameChange"
@@ -12,19 +13,56 @@
     />
 
     <van-field
+      value="{{ responsible }}"
+      required
+      clearable
+      input-align="right"
+      label="责任人"
+      placeholder="请输入责任人名姓名"
+      bind:change="onResponsibleChange"
+      bind:click-icon="onClickIcon"
+    />
+
+    <!-- <van-field
       value="{{ workshop }}"
       label="车间"
       placeholder="请输入车间"
       required
       border="{{ false }}"
       bind:change="onWorkShopChange"
-    />
+    /> -->
+
+    <van-cell title="车间" is-link bind:click="showPopup" value="{{workshop || '请选择车间'}}" />
+
+    <van-popup 
+      show="{{ show }}"
+      position="bottom"
+      bind:close="onClose"
+    >
+      <van-picker 
+        show-toolbar
+        columns="{{ columns }}" 
+        bind:change="onWorkShopTypeChange"
+        bind:confirm="onWorkShopConfirm"
+        bind:cancel="onClose"
+      />
+    </van-popup>
+    
+    <!-- <view class="workshop-label" hover-class="none" hover-stop-propagation="false">
+      <label>车间</label>
+    </view>
+    <van-radio-group value="{{ radio }}" bind:change="onChange">
+      <van-radio name="1">锻造</van-radio>
+      <van-radio name="2">金工</van-radio>
+      <van-radio name="3">绞丝</van-radio>
+    </van-radio-group> -->
 
     <van-field
       value="{{ procedure }}"
       label="工序"
-      placeholder="请输入车间"
+      placeholder="请输入工序"
       required
+      input-align="right"
       border="{{ false }}"
       bind:change="onProcedureChange"
     />
@@ -34,6 +72,7 @@
       label="设备"
       placeholder="请输入设备"
       required
+      input-align="right"
       border="{{ false }}"
       bind:change="onEquipmentChange"
     />
